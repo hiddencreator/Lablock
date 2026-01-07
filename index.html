@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poki Games - JV</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+            font-family: Arial, sans-serif;}
+        .card{
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid black;
+            background: #2196F; /* Same Blue for all */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;}
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px; }
+        .copy-btn {
+            background: black;
+            color: #2196F3;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .copy-btn.copied {
+            background: #4CAF50;
+            color: white;
+        }
+        .code-repository {
+            display: none;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-----     JV01    ----->
+        <div class="card">
+            <div class="title">
+                <span>JV01</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode('jv01', this)">
+                &#9749;
+            </button>
+        </div>
+    <!-----     JV02    ----->
+        <div class="card">
+            <div class="title">
+                <span>JV02</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode('jv02', this)">
+              &#9749;
+            </button>
+        </div>
+    <!-----     JV03    ----->
+        <div class="card">
+            <div class="title">
+                <span>JV03</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode('jv03', this)">
+                &#9749;
+            </button>
+        </div>
+
+
+    <!-----   Repository   ----->
+    <div class="code-repository">
+        
+    <!-----     JV01    ----->
+        <pre id="jv01">
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Stack {
+private static final int size = 5;
+private int top;
+private int[] S;
+
+public Stack() {
+S = new int[size];
+top = -1;
+}
+
+public boolean isEmpty() {
+return top == -1; // Fixed: should be == not --
+}
+
+public void push(int value) {
+if (top == size - 1) { // Fixed: should be == not =
+System.out.println("Stack is full, cannot push " + value);
+} else {
+S[++top] = value; // Fixed: should be S[++top]
+System.out.println("Pushed " + value);
+}
+}
+
+public void pop() {
+if (isEmpty()) {
+System.out.println("Stack is empty");
+} else {
+System.out.println("Deleted " + S[top--]);
+}
+}
+
+public int peek() {
+if (isEmpty()) {
+System.out.println("Stack is empty");
+return -1;
+} else {
+return S[top];
+}
+}
+
+public static void main(String args[]) {
+Stack St = new Stack();
+St.push(10);
+St.push(20);
+St.push(30);
+St.push(40);
+St.push(50);
+St.push(60); // This will fail since stack only holds 5 elements
+System.out.println("Top element = " + St.peek());
+St.pop();
+St.pop();
+System.out.println("Top element after deleting = " + St.peek());
+}
+}
+        </pre>
+
+    <!-----     JV02    ----->
+        <pre id="jv02">
+// JAVA CODE FOR JV02
+class Program2 {
+    public static void main(String[] args) {
+        System.out.println("Queue Program");
+    }
+}
+        </pre>
+
+    <!-----     JV03    ----->
+        <pre id="jv03">
+// JAVA CODE FOR JV03
+class Program3 {
+    public static void main(String[] args) {
+        System.out.println("Linked List Program");
+    }
+}
+        </pre>
+        
+    <!----- Repository End ----->
+    </div>
+    <div class="notification" id="note">&#127873; Copied! Redirecting...</div>
+
+    <script>
+        function copyCode(id, btn) {
+            const code = document.getElementById(id).textContent.trim();
+            const el = document.createElement('textarea');
+            el.value = code;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            // UI Changes
+            btn.innerHTML = '&#10003;';
+            btn.classList.add('copied');
+            document.getElementById('note').style.display = 'block';
+
+            // Redirect
+            setTimeout(() => {
+                window.location.href = 'https://poki.com';
+            }, 500);
+        }
+        // Automatic Redirect after 10 seconds of landing on the site
+window.onload = function() {
+    setTimeout(() => {
+        window.location.href = 'https://poki.com';
+    }, 10000); // 10000ms = 10 seconds
+};
+    </script>
+</body>
+</html>
